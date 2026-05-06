@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ZALVIQ — Others Compete. We Define.</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --g:#C9A84C;--g1:rgba(201,168,76,.08);--g2:rgba(201,168,76,.18);
+  --g4:rgba(201,168,76,.4);--g7:rgba(201,168,76,.7);
+  --bk:#1A0A0E;--bk2:#200C11;--bk3:#261017;--bk4:#2C1219;
+  --rose:rgba(180,40,60,.15);--rose2:rgba(180,40,60,.06);
+  --wh:#fff;--w9:rgba(255,255,255,.9);--w7:rgba(255,255,255,.7);
+  --w5:rgba(255,255,255,.5);--w3:rgba(255,255,255,.28);--w15:rgba(255,255,255,.15);
+}
+html{overflow-x:hidden;scroll-behavior:smooth}
+body{background:var(--bk);color:var(--wh);font-family:'Raleway',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+
+/* GRAIN */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:9990;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  animation:gr .3s steps(2) infinite}
+@keyframes gr{0%{transform:translate(0)}33%{transform:translate(-1%,-2%)}66%{transform:translate(2%,1%)}100%{transform:translate(-1%,2%)}}
+
+/* CURSOR */
+.cdot{position:fixed;width:8px;height:8px;background:var(--g);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+.cring{position:fixed;width:44px;height:44px;border:1px solid var(--g4);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .35s}
+.ct{position:fixed;width:4px;height:4px;border-radius:50%;pointer-events:none;z-index:9996;transform:translate(-50%,-50%)}
+body.hov .cdot{transform:translate(-50%,-50%) scale(3);opacity:.4}
+body.hov .cring{width:68px;height:68px;border-color:var(--g7)}
+
+/* PROGRESS */
+#pgb{position:fixed;top:0;left:0;height:2px;z-index:9999;width:0;
+  background:linear-gradient(90deg,#8B1A2A,var(--g),#ffe98a,var(--g),#8B1A2A);
+  background-size:300% 100%;animation:pgshine 3s linear infinite;
+  box-shadow:0 0 16px rgba(201,168,76,.45),0 0 32px rgba(139,26,42,.3)}
+@keyframes pgshine{0%{background-position:100% 0}100%{background-position:0% 0}}
+
+/* LOADER */
+#ldr{position:fixed;inset:0;background:var(--bk);z-index:8000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;overflow:hidden}
+#ldr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(139,26,42,.12),transparent 70%)}
+#ldr::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),transparent);animation:ls 2s ease-in-out infinite}
+@keyframes ls{0%,100%{opacity:.3}50%{opacity:1}}
+.lw{font-family:'Black Ops One',sans-serif;font-size:clamp(4rem,12vw,9rem);color:var(--g);letter-spacing:.1em;clip-path:polygon(0 100%,100% 100%,100% 100%,0 100%);transition:clip-path 1.3s cubic-bezier(.16,1,.3,1);position:relative;z-index:1;
+  text-shadow:0 0 60px rgba(201,168,76,.25),0 0 120px rgba(139,26,42,.2)}
+.lw.go{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.ltrack{width:300px;height:1px;background:rgba(201,168,76,.1);position:relative;z-index:1}
+.lfill{height:100%;background:linear-gradient(90deg,#8B1A2A,var(--g),#ffe98a);width:0;transition:width .05s linear}
+.lpct{font-family:'Black Ops One',sans-serif;font-size:.85rem;color:var(--g4);letter-spacing:.3em;position:relative;z-index:1}
+.ldr-out{animation:lwipe .9s cubic-bezier(.7,0,.3,1) forwards}
+@keyframes lwipe{to{clip-path:polygon(0 0,100% 0,100% 0,0 0)}}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:700;padding:2.5rem 6rem;display:flex;align-items:center;justify-content:space-between;transition:padding .5s,background .5s,border-color .5s;border-bottom:1px solid transparent}
+nav.on{padding:1.2rem 6rem;background:rgba(26,10,14,.92);border-color:rgba(201,168,76,.08);backdrop-filter:blur(28px)}
+.nlogo{font-family:'Black Ops One',sans-serif;font-size:1.5rem;color:var(--g);text-decoration:none;letter-spacing:.1em;height:1.7rem;overflow:hidden;display:flex;align-items:center;position:relative}
+.nla,.nlb{display:block;transition:transform .5s cubic-bezier(.16,1,.3,1);line-height:1.3}
+.nlb{position:absolute;top:105%;color:var(--wh)}
+.nlogo:hover .nla{transform:translateY(-110%)}
+.nlogo:hover .nlb{transform:translateY(-110%)}
+.nlinks{display:flex;gap:3.5rem;list-style:none}
+.nl{font-size:.58rem;font-weight:300;letter-spacing:.48em;text-transform:uppercase;color:var(--w5);text-decoration:none;transition:color .3s;position:relative;padding-bottom:4px}
+.nl::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--g);transition:width .38s}
+.nl:hover,.nl.on{color:var(--g)}.nl:hover::after,.nl.on::after{width:100%}
+.ncta{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;padding:.78rem 2rem;border:1px solid var(--g2);color:var(--g);text-decoration:none;position:relative;overflow:hidden;transition:color .4s}
+.ncta::before{content:'';position:absolute;inset:0;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .42s cubic-bezier(.16,1,.3,1)}
+.ncta:hover{color:var(--bk)}.ncta:hover::before{transform:scaleX(1)}
+.ncta span{position:relative;z-index:1}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px}
+.hbg span{display:block;width:24px;height:1px;background:var(--g);transition:.4s}
+.hbg.on span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hbg.on span:nth-child(2){opacity:0}
+.hbg.on span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mob{position:fixed;inset:0;background:rgba(26,10,14,.97);z-index:699;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.8rem;opacity:0;pointer-events:none;transition:opacity .45s}
+.mob.on{opacity:1;pointer-events:all}
+.mob a{font-family:'Black Ops One',sans-serif;font-size:2.5rem;color:var(--w3);text-decoration:none;letter-spacing:.08em;transition:color .3s,opacity .5s,transform .5s;opacity:0;transform:translateY(28px)}
+.mob.on a{opacity:1;transform:none}
+.mob.on a:nth-child(1){transition-delay:.1s}.mob.on a:nth-child(2){transition-delay:.2s}
+.mob.on a:nth-child(3){transition-delay:.3s}.mob.on a:nth-child(4){transition-delay:.4s}
+.mob a:hover{color:var(--g)}
+
+/* HERO */
+#home{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+/* Radial burgundy-rose vignette */
+#home::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(139,26,42,.08) 0%,transparent 70%);z-index:1;pointer-events:none}
+/* scan line */
+#home::after{content:'';position:absolute;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.2),rgba(180,60,80,.2),rgba(201,168,76,.2),transparent);z-index:3;animation:scan 7s ease-in-out infinite;pointer-events:none}
+@keyframes scan{0%,100%{top:-1%;opacity:0}8%{opacity:1}92%{opacity:1}99%{top:101%;opacity:0}}
+#glCanvas{position:absolute;inset:0;z-index:0}
+.hinner{position:relative;z-index:2;padding:0 2rem;width:100%}
+.heye{font-size:.56rem;font-weight:300;letter-spacing:.78em;color:var(--g);text-transform:uppercase;display:block;margin-bottom:3rem;opacity:0;transform:translateY(16px)}
+.hwm{display:block;position:relative;line-height:.88}
+.hwm-out{font-family:'Black Ops One',sans-serif;font-size:clamp(5rem,19vw,18rem);letter-spacing:.02em;color:transparent;-webkit-text-stroke:1px rgba(201,168,76,.18);position:absolute;top:0;left:0;width:100%;pointer-events:none}
+.hwm-fill{font-family:'Black Ops One',sans-serif;font-size:clamp(5rem,19vw,18rem);letter-spacing:.02em;color:var(--g);display:block;clip-path:polygon(0 100%,100% 100%,100% 100%,0 100%);transition:clip-path 1.4s cubic-bezier(.16,1,.3,1) .6s;position:relative;
+  text-shadow:0 0 80px rgba(201,168,76,.15),0 0 160px rgba(139,26,42,.1)}
+.hwm-fill.go{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.hwm-fill::before{content:'ZALVIQ';position:absolute;inset:0;font-family:'Black Ops One',sans-serif;font-size:clamp(5rem,19vw,18rem);letter-spacing:.02em;color:#ff6080;opacity:0;clip-path:polygon(0 18%,100% 18%,100% 34%,0 34%);animation:gxa 7s 6s infinite;pointer-events:none}
+.hwm-fill::after{content:'ZALVIQ';position:absolute;inset:0;font-family:'Black Ops One',sans-serif;font-size:clamp(5rem,19vw,18rem);letter-spacing:.02em;color:#00f5ff;opacity:0;clip-path:polygon(0 58%,100% 58%,100% 75%,0 75%);animation:gxb 7s 6.12s infinite;pointer-events:none}
+@keyframes gxa{0%,91%,100%{opacity:0;transform:none}92%{opacity:.5;transform:translateX(-5px)}93.5%{opacity:.5;transform:translateX(4px)}94%{opacity:0}}
+@keyframes gxb{0%,91%,100%{opacity:0;transform:none}92.5%{opacity:.4;transform:translateX(5px)}94%{opacity:.4;transform:translateX(-4px)}94.5%{opacity:0}}
+.hwm-fill{background:linear-gradient(105deg,transparent 38%,rgba(255,220,150,.15) 50%,transparent 62%) no-repeat;background-size:200% 100%;background-position:100% 0;animation:shn 6s 2.5s infinite}
+@keyframes shn{0%,100%{background-position:200% 0}40%,60%{background-position:-200% 0}}
+.hrule{display:flex;align-items:center;gap:2rem;justify-content:center;margin:3rem 0;opacity:0}
+.hrl{width:80px;height:1px;opacity:.3}.hrl.l{background:linear-gradient(90deg,transparent,var(--g))}.hrl.r{background:linear-gradient(90deg,var(--g),transparent)}
+.hdm{width:7px;height:7px;background:var(--g);transform:rotate(45deg);opacity:.55;flex-shrink:0}
+.hsl{font-size:clamp(.55rem,.85vw,.72rem);font-weight:300;letter-spacing:.58em;color:rgba(201,168,76,.85);text-transform:uppercase}
+.hdesc{font-size:1.05rem;font-weight:300;line-height:2.3;color:var(--w9);max-width:520px;margin:0 auto;opacity:0;transform:translateY(18px)}
+.hbtns{display:flex;gap:1.8rem;justify-content:center;margin-top:3.8rem;opacity:0;transform:translateY(14px)}
+.hscr{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);text-align:center;opacity:0;z-index:2}
+.hst{font-size:.5rem;letter-spacing:.6em;color:var(--w3);text-transform:uppercase;display:block;margin-bottom:.8rem}
+.hsln{width:1px;height:52px;background:linear-gradient(rgba(201,168,76,.4),transparent);margin:0 auto;transform-origin:top;animation:sc 2s ease infinite}
+@keyframes sc{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* BUTTONS */
+.btng{display:inline-block;position:relative;padding:1.25rem 4.2rem;font-size:.62rem;font-weight:300;letter-spacing:.48em;text-transform:uppercase;text-decoration:none;color:var(--bk);background:var(--g);overflow:hidden;transition:box-shadow .4s;
+  box-shadow:0 0 0 rgba(201,168,76,0),0 4px 30px rgba(139,26,42,.4)}
+.btng:hover{box-shadow:0 0 50px rgba(201,168,76,.25),0 4px 40px rgba(139,26,42,.4)}
+.btng::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.2);transform:translateX(-101%);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.btng:hover::after{transform:translateX(0)}
+.btng span{position:relative;z-index:1}
+.btno{display:inline-block;position:relative;padding:1.25rem 4.2rem;font-size:.62rem;font-weight:300;letter-spacing:.48em;text-transform:uppercase;text-decoration:none;color:var(--wh);border:1px solid rgba(255,255,255,.18);overflow:hidden;transition:color .4s,border-color .4s,box-shadow .4s}
+.btno::before{content:'';position:absolute;inset:0;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .48s cubic-bezier(.16,1,.3,1)}
+.btno:hover{color:var(--bk);border-color:var(--g);box-shadow:0 0 40px rgba(201,168,76,.2)}
+.btno:hover::before{transform:scaleX(1)}
+.btno span{position:relative;z-index:1}
+
+/* MARQUEE */
+.mq{padding:1.7rem 0;border-top:1px solid rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08);overflow:hidden;background:var(--bk2)}
+.mqt{display:flex;gap:3.5rem;width:max-content;animation:mqs 30s linear infinite}
+.mqi{font-family:'Black Ops One',sans-serif;font-size:.7rem;letter-spacing:.38em;color:var(--g);opacity:.14;white-space:nowrap}
+.mqs{color:rgba(180,60,80,.4);font-size:.44rem;align-self:center}
+@keyframes mqs{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{padding:12rem 8rem;position:relative;overflow:hidden}
+/* burgundy radial glow per section */
+.sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 0%,rgba(139,26,42,.06),transparent 70%);pointer-events:none}
+.slbl{display:block;font-size:.56rem;font-weight:300;letter-spacing:.68em;color:var(--g);text-transform:uppercase;margin-bottom:1.5rem}
+.sttl{font-family:'Black Ops One',sans-serif;font-size:clamp(2.5rem,5.5vw,4.6rem);letter-spacing:.03em;line-height:1.05}
+.sttl em{font-style:normal;color:var(--g)}
+.sbody{font-size:.97rem;font-weight:300;line-height:2.2;color:var(--w9)}
+.lrev{overflow:hidden;display:block}
+.lrevi{display:block;transform:translateY(108%);transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+.sec.in .lrevi{transform:translateY(0)}
+
+/* ABOUT */
+#about{background:var(--bk)}
+.abwrap{display:grid;grid-template-columns:1fr 1.08fr;gap:9rem;align-items:center;margin-top:7rem}
+.abq{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.4rem,2.4vw,2rem);color:var(--wh);line-height:1.65;padding-left:2.5rem;border-left:1px solid rgba(201,168,76,.25);margin:2.5rem 0}
+.abq em{color:var(--g);font-style:normal}
+.abcard{border:1px solid rgba(201,168,76,.1);padding:4rem;position:relative;overflow:hidden;background:linear-gradient(140deg,rgba(201,168,76,.04),rgba(139,26,42,.04) 50%,transparent)}
+.abcard::before{content:'';position:absolute;top:0;left:0;width:0;height:1px;background:linear-gradient(90deg,var(--g),rgba(180,40,60,.4),transparent);transition:width .9s ease .2s}
+.sec.in .abcard::before{width:100%}
+.ablbl{font-size:.54rem;letter-spacing:.58em;color:var(--g);text-transform:uppercase;font-weight:300;margin-bottom:1.4rem}
+.abq2{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--wh);line-height:1.65;font-weight:300}
+.abq2 em{color:var(--g);font-style:normal}
+.absep{width:100%;height:1px;background:rgba(201,168,76,.08);margin:2.5rem 0}
+/* subtle rose tint on sep */
+.absep{background:linear-gradient(90deg,rgba(201,168,76,.08),rgba(180,40,60,.12),rgba(201,168,76,.08))}
+.cnt{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(201,168,76,.08);margin-top:6rem}
+.cnti{padding:3.5rem;border-right:1px solid rgba(201,168,76,.08);text-align:center;position:relative;overflow:hidden;transition:background .4s}
+.cnti:last-child{border-right:none}
+.cnti:hover{background:rgba(139,26,42,.06)}
+.cnti::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--g),rgba(180,40,60,.6));transition:width .55s ease}
+.cnti:hover::after{width:100%}
+.cntn{font-family:'Black Ops One',sans-serif;font-size:2.8rem;color:var(--g);display:block;letter-spacing:.04em;text-shadow:0 0 30px rgba(201,168,76,.15)}
+.cntl{font-size:.55rem;letter-spacing:.44em;color:var(--w5);text-transform:uppercase;margin-top:.6rem;display:block;font-weight:300}
+
+/* BRANDS HORIZONTAL */
+#bpin{overflow:hidden}
+.bstk{height:100vh;position:sticky;top:0;overflow:hidden}
+.btrk{display:flex;height:100%;will-change:transform}
+.bpan{width:100vw;height:100vh;flex-shrink:0;position:relative;display:flex;align-items:center;padding:0 8rem;overflow:hidden}
+.bpan:nth-child(odd){background:var(--bk)}
+.bpan:nth-child(even){background:var(--bk2)}
+/* rose-to-transparent side accent */
+.bpan::after{content:'';position:absolute;left:0;top:0;width:3px;height:0;background:linear-gradient(to bottom,var(--g),rgba(180,40,60,.5),transparent);transition:height 1.2s cubic-bezier(.16,1,.3,1)}
+.bpan.vis::after{height:100%}
+.bpnum{font-family:'Black Ops One',sans-serif;font-size:24vw;color:var(--g);opacity:.04;position:absolute;right:-3rem;top:50%;transform:translateY(-50%);line-height:1;pointer-events:none;user-select:none}
+.bpinn{position:relative;z-index:1;max-width:680px}
+.bplbl{font-size:.55rem;letter-spacing:.62em;color:var(--g);text-transform:uppercase;font-weight:300;margin-bottom:2rem}
+.bpname{font-family:'Black Ops One',sans-serif;font-size:clamp(2.8rem,6.5vw,5.5rem);color:var(--wh);letter-spacing:.03em;line-height:.95;margin-bottom:1.5rem;overflow:hidden}
+.bpname span{display:block;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.bpan.vis .bpname span{transform:translateY(0)}
+.bpname span:nth-child(2){transition-delay:.12s}
+.bpsub{font-size:.6rem;letter-spacing:.4em;color:var(--g);text-transform:uppercase;margin-bottom:2.5rem;font-weight:300}
+.bpdesc{font-size:.97rem;color:var(--w9);line-height:2.2;max-width:520px;margin-bottom:2.5rem}
+.bptags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:3rem}
+.bptag{padding:.22rem .88rem;border:1px solid rgba(201,168,76,.22);font-size:.55rem;letter-spacing:.3em;color:var(--g);text-transform:uppercase;transition:all .3s}
+.bptag:hover{background:var(--g);color:var(--bk)}
+.bplive{display:inline-flex;align-items:center;gap:.65rem;font-size:.55rem;letter-spacing:.38em;color:rgba(201,168,76,.7);text-transform:uppercase}
+.bpdot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80;animation:pdot 2s infinite}
+.bpdots{background:rgba(201,168,76,.4);box-shadow:none;animation:none}
+@keyframes pdot{0%,100%{opacity:1}50%{opacity:.25}}
+.bpg{position:absolute;bottom:3.5rem;left:50%;transform:translateX(-50%);display:flex;gap:1.2rem}
+.bpgd{width:6px;height:6px;border:1px solid rgba(201,168,76,.35);border-radius:50%;transition:all .3s}
+.bpgd.on{background:var(--g);border-color:var(--g);box-shadow:0 0 8px rgba(201,168,76,.5)}
+.bnxt{position:absolute;bottom:3rem;right:8rem;display:flex;align-items:center;gap:.9rem;color:var(--g);opacity:.35;font-size:.54rem;letter-spacing:.4em;text-transform:uppercase;transition:opacity .3s}
+.bnxt:hover{opacity:.8}
+.bnxtarr{display:inline-block;animation:na 1.5s ease infinite}
+@keyframes na{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+
+/* MANIFESTO */
+#mf{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:var(--bk);padding:10rem 8rem}
+#mf::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(139,26,42,.1),transparent 70%)}
+.mfbg{position:absolute;font-family:'Black Ops One',sans-serif;font-size:28vw;color:var(--g);opacity:.025;pointer-events:none;white-space:nowrap;will-change:transform;letter-spacing:-.02em}
+.mfinn{position:relative;z-index:1;text-align:center;max-width:1100px}
+.mftag{font-size:.56rem;letter-spacing:.68em;color:var(--g);text-transform:uppercase;font-weight:300;margin-bottom:3rem;display:block}
+.mftxt{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.8rem,4vw,3.5rem);line-height:1.5;color:rgba(255,255,255,.18)}
+.mfw{display:inline;transition:color .12s,text-shadow .12s}
+.mfw.lit{color:var(--wh)}
+.mfw.gld{color:var(--g);text-shadow:0 0 40px rgba(201,168,76,.4),0 0 80px rgba(139,26,42,.3)}
+.mfrule{display:flex;align-items:center;gap:2rem;justify-content:center;margin:4rem 0}
+.mfrl{width:80px;height:1px;opacity:.3}.mfrl.l{background:linear-gradient(90deg,transparent,var(--g))}.mfrl.r{background:linear-gradient(90deg,var(--g),transparent)}
+.mfdm{width:8px;height:8px;background:var(--g);transform:rotate(45deg);opacity:.5;flex-shrink:0}
+.mfattr{font-size:.56rem;letter-spacing:.65em;color:rgba(201,168,76,.4);text-transform:uppercase;font-weight:300}
+
+/* VALUES */
+#val{background:var(--bk2)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;margin-top:6rem}
+.vi{padding:4.5rem;border:1px solid rgba(201,168,76,.08);position:relative;overflow:hidden;transition:background .45s}
+.vi:hover{background:rgba(139,26,42,.06)}
+.viswp{position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,var(--g) 0%,rgba(180,40,60,.5) 60%,transparent);transform:translateX(-100%);transition:transform .7s ease}
+.vi:hover .viswp{transform:translateX(200%)}
+.vigh{position:absolute;bottom:-1.5rem;right:-1rem;font-family:'Black Ops One',sans-serif;font-size:8rem;color:var(--g);opacity:.04;line-height:1;pointer-events:none;transition:opacity .45s,transform .45s}
+.vi:hover .vigh{opacity:.07;transform:scale(1.05)}
+.vnum{font-size:.55rem;letter-spacing:.58em;color:var(--g);font-weight:300;margin-bottom:2rem}
+.vtit{font-family:'Black Ops One',sans-serif;font-size:1.02rem;color:var(--wh);letter-spacing:.07em;margin-bottom:1.2rem}
+.vdesc{font-size:.88rem;color:var(--w9);line-height:2.05}
+
+/* CONTACT */
+#ct{background:var(--bk)}
+.ctgrid{display:grid;grid-template-columns:1fr 1.6fr;gap:9rem;margin-top:6rem}
+.ctlbl{font-size:.54rem;letter-spacing:.5em;color:var(--g);text-transform:uppercase;font-weight:300;margin-bottom:.5rem}
+.ctval{font-size:.95rem;color:var(--w9);margin-bottom:2.5rem}
+.fg{margin-bottom:2.2rem;position:relative}
+.fg label{display:block;font-size:.54rem;letter-spacing:.5em;color:var(--g);text-transform:uppercase;font-weight:300;margin-bottom:.9rem;opacity:.65;transition:opacity .3s}
+.fg:focus-within label{opacity:1}
+.fg input,.fg textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,168,76,.15);padding:.9rem 0;color:var(--wh);font-family:'Raleway',sans-serif;font-size:.95rem;font-weight:300;outline:none;transition:border-color .4s;caret-color:var(--g)}
+.fg input:focus,.fg textarea:focus{border-color:var(--g4)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--w15);font-size:.85rem}
+.fg textarea{min-height:130px;resize:none}
+.fgbar{position:absolute;bottom:0;left:0;width:0;height:1px;background:linear-gradient(90deg,var(--g),rgba(180,40,60,.5));transition:width .4s ease}
+.fg:focus-within .fgbar{width:100%}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+
+/* FOOTER */
+footer{padding:5rem 8rem 4rem;border-top:1px solid rgba(201,168,76,.08);position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.2),rgba(180,40,60,.15),rgba(201,168,76,.2),transparent)}
+.ftgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4rem}
+.ftlogo{font-family:'Black Ops One',sans-serif;font-size:2.2rem;color:var(--g);letter-spacing:.08em;text-shadow:0 0 30px rgba(201,168,76,.15)}
+.fttag{font-size:.53rem;letter-spacing:.52em;color:var(--g);opacity:.4;text-transform:uppercase;margin-top:.5rem;font-weight:300}
+.ftcolh{font-size:.53rem;letter-spacing:.52em;color:var(--w3);text-transform:uppercase;margin-bottom:1.5rem;font-weight:300}
+.ftlnks{list-style:none;display:flex;flex-direction:column;gap:.9rem}
+.ftlnks a{font-size:.88rem;color:var(--w5);text-decoration:none;font-weight:300;transition:color .3s,padding-left .3s}
+.ftlnks a:hover{color:var(--g);padding-left:.5rem}
+.ftbot{display:flex;justify-content:space-between;align-items:center;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,.07)}
+.ftcopy{font-size:.62rem;color:var(--w3);letter-spacing:.09em}
+
+/* DIVIDER */
+.gd{height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.15) 30%,rgba(180,40,60,.2) 50%,rgba(201,168,76,.15) 70%,transparent)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}
+
+@media(max-width:1100px){
+  nav,nav.on{padding:1.5rem 2.5rem}
+  .nlinks,.ncta{display:none}.hbg{display:flex}
+  .sec{padding:7rem 2.5rem}
+  .abwrap,.ctgrid,.ftgrid{grid-template-columns:1fr;gap:3rem}
+  .vgrid{grid-template-columns:1fr}
+  .cnt{grid-template-columns:1fr}
+  .cnti{border-right:none;border-bottom:1px solid rgba(201,168,76,.08)}
+  .cnti:last-child{border-bottom:none}
+  footer{padding:4rem 2.5rem 3rem}
+  .ftbot{flex-direction:column;gap:1rem;text-align:center}
+  .f2{grid-template-columns:1fr}
+  .bpan{padding:0 2.5rem}.bnxt{right:2.5rem}
+  #mf{padding:7rem 2.5rem}
+  body{cursor:auto}
+  .cdot,.cring,.ct{display:none}
+}
+@media(max-width:640px){
+  .hwm-fill,.hwm-fill::before,.hwm-fill::after,.hwm-out{font-size:4.5rem}
+  .mfbg{font-size:44vw}
+  .hbtns{flex-direction:column;align-items:center}
+  .bpname{font-size:2.4rem}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="cdot" id="cd"></div>
+<div class="cring" id="cr"></div>
+<div id="pgb"></div>
+
+<script>
+for(let i=0;i<8;i++){const d=document.createElement('div');d.className='ct';d.id='ct'+i;d.style.background=i<3?'#C9A84C':'rgba(180,60,80,.8)';document.body.appendChild(d)}
+</script>
+
+<!-- LOADER -->
+<div id="ldr">
+  <div class="lw" id="lw">ZALVIQ</div>
+  <div class="ltrack"><div class="lfill" id="lf"></div></div>
+  <div class="lpct" id="lp">000</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nlogo"><span class="nla">ZALVIQ</span><span class="nlb">ZALVIQ</span></a>
+  <ul class="nlinks">
+    <li><a href="#home" class="nl">Home</a></li>
+    <li><a href="#about" class="nl">About</a></li>
+    <li><a href="#bpin" class="nl">Brands</a></li>
+    <li><a href="#ct" class="nl">Contact</a></li>
+  </ul>
+  <a href="#ct" class="ncta"><span>Get In Touch</span></a>
+  <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mob">
+  <a href="#home">Home</a><a href="#about">About</a><a href="#bpin">Brands</a><a href="#ct">Contact</a>
+</div>
+
+<!-- HOME -->
+<section id="home">
+  <canvas id="glCanvas"></canvas>
+  <div class="hinner">
+    <span class="heye" id="he">Est. 2026 &nbsp;&middot;&nbsp; Global Conglomerate &nbsp;&middot;&nbsp; Riyadh, KSA</span>
+    <div class="hwm"><span class="hwm-out" aria-hidden="true">ZALVIQ</span><span class="hwm-fill" id="hw">ZALVIQ</span></div>
+    <div class="hrule" id="hr"><div class="hrl l"></div><div class="hdm"></div><span class="hsl">Others Compete. We Define.</span><div class="hdm"></div><div class="hrl r"></div></div>
+    <p class="hdesc" id="hd">A conglomerate built not on size, but on standard.<br>Every brand under ZALVIQ carries one mandate &mdash; to be the undisputed best of what it is.</p>
+    <div class="hbtns" id="hb"><a href="#bpin" class="btng"><span>Explore Brands</span></a><a href="#about" class="btno"><span>Our Story</span></a></div>
+  </div>
+  <div class="hscr" id="hs"><span class="hst">Scroll</span><div class="hsln"></div></div>
+</section>
+
+<div class="mq"><div class="mqt" id="mqt"></div></div>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <span class="slbl rv">Our Story</span>
+  <h2 class="sttl"><span class="lrev"><span class="lrevi rv d1">Not a Company.</span></span><span class="lrev"><span class="lrevi rv d2"><em>A Standard.</em></span></span></h2>
+  <div class="abwrap">
+    <div class="rv d2">
+      <p class="sbody" style="margin-bottom:1.8rem">ZALVIQ was not created because the market needed another brand. It was created because the market needed a <span style="color:var(--g)">better one.</span></p>
+      <blockquote class="abq">"Born from a refusal to compromise &mdash; on quality, on identity, on the details that most people never notice but everyone always <em>feels.</em>"</blockquote>
+      <p class="sbody">From Riyadh, we build a conglomerate spanning fragrance, technology, lifestyle and beyond &mdash; united not by category, but by standard.</p>
+    </div>
+    <div class="rv d3">
+      <div class="abcard">
+        <div class="ablbl">Mission</div>
+        <p class="abq2">To build brands that don't just compete in their categories &mdash; but <em>redefine what those categories mean.</em></p>
+        <div class="absep"></div>
+        <div class="ablbl">Vision</div>
+        <p class="abq2">A globally recognized name that, when seen anywhere in the world, needs <em>no further explanation.</em></p>
+      </div>
+    </div>
+  </div>
+  <div class="cnt rv">
+    <div class="cnti"><span class="cntn" data-count="2026">2026</span><span class="cntl">Year Founded</span></div>
+    <div class="cnti"><span class="cntn" data-count="2">2</span><span class="cntl">Active Brands</span></div>
+    <div class="cnti"><span class="cntn" style="letter-spacing:0">&infin;</span><span class="cntl">The Standard</span></div>
+  </div>
+</section>
+
+<div class="gd"></div>
+
+<!-- BRANDS -->
+<div id="bpin">
+  <div class="bstk" id="bstk">
+    <div class="btrk" id="btrk">
+      <div class="bpan" style="justify-content:center;text-align:center;flex-direction:column">
+        <div class="bpnum" style="right:50%;transform:translate(50%,-50%);opacity:.025">&hearts;</div>
+        <span class="slbl" style="display:block">Portfolio</span>
+        <h2 class="sttl" style="font-size:clamp(3.5rem,9vw,8rem);text-align:center"><em>The</em><br>Brands</h2>
+        <p class="sbody" style="max-width:400px;margin:2rem auto">Distinct identities. One shared standard: the highest one.</p>
+        <div style="color:var(--g);opacity:.3;font-size:.54rem;letter-spacing:.48em;text-transform:uppercase;margin-top:2.5rem;display:flex;align-items:center;gap:1rem;justify-content:center">Scroll to explore <span style="display:inline-block;animation:na 1.5s ease infinite">&rarr;</span></div>
+        <div class="bpg" id="bpg"><div class="bpgd on" data-i="0"></div><div class="bpgd" data-i="1"></div><div class="bpgd" data-i="2"></div><div class="bpgd" data-i="3"></div></div>
+      </div>
+
+      <div class="bpan">
+        <div class="bpnum">01</div>
+        <div class="bpinn">
+          <div class="bplbl">01 &nbsp;&middot;&nbsp; Luxury Fragrance</div>
+          <div class="bpname"><span>ZALVIQ</span><span>PARFUMS</span></div>
+          <div class="bpsub">Est. 2026 &nbsp;&middot;&nbsp; Riyadh, KSA</div>
+          <p class="bpdesc">Rare, handcrafted scents built for those who understand that a fragrance is not merely a smell &mdash; it is an introduction. Four signature lines that define what luxury smells like.</p>
+          <div class="bptags"><span class="bptag">Noir</span><span class="bptag">Blanc</span><span class="bptag">Rouge</span><span class="bptag">Or</span></div>
+          <div class="bplive"><span class="bpdot"></span>Active</div>
+        </div>
+        <div class="bnxt"><span>Next</span><span class="bnxtarr">&rarr;</span></div>
+      </div>
+
+      <div class="bpan">
+        <div class="bpnum">02</div>
+        <div class="bpinn">
+          <div class="bplbl">02 &nbsp;&middot;&nbsp; Digital &amp; Software</div>
+          <div class="bpname"><span>ZALVIQ</span><span>TECH</span></div>
+          <div class="bpsub">Est. 2026 &nbsp;&middot;&nbsp; Global</div>
+          <p class="bpdesc">Intelligent software engineered for the few who demand precision over compromise. From mobile applications to enterprise AI &mdash; built to outperform and outlast.</p>
+          <div class="bptags"><span class="bptag">Mobile Apps</span><span class="bptag">AI Tools</span><span class="bptag">Enterprise</span></div>
+          <div class="bplive"><span class="bpdot"></span>Active</div>
+        </div>
+        <div class="bnxt"><span>Next</span><span class="bnxtarr">&rarr;</span></div>
+      </div>
+
+      <div class="bpan" style="opacity:.38">
+        <div class="bpnum" style="opacity:.4">03</div>
+        <div class="bpinn">
+          <div class="bplbl">03 &nbsp;&middot;&nbsp; New Vertical</div>
+          <div class="bpname" style="color:rgba(255,255,255,.35)"><span>COMING</span><span>SOON</span></div>
+          <div class="bpsub">In Development &nbsp;&middot;&nbsp; 2027</div>
+          <p class="bpdesc" style="opacity:.5">The next chapter of ZALVIQ is being written. A new brand. A new category. The same uncompromising standard.</p>
+          <div class="bplive" style="margin-top:1rem"><span class="bpdots" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(201,168,76,.4);margin-right:.65rem"></span>In Development</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gd"></div>
+
+<!-- MANIFESTO -->
+<div id="mf">
+  <div class="mfbg" id="mfbg">DEFINE</div>
+  <div class="mfinn">
+    <span class="mftag rv">Brand Manifesto &nbsp;&middot;&nbsp; 2026</span>
+    <p class="mftxt" id="mftxt"></p>
+    <div class="mfrule"><div class="mfrl l"></div><div class="mfdm"></div><div class="mfrl r"></div></div>
+    <p class="mfattr rv">&mdash; ZALVIQ</p>
+  </div>
+</div>
+
+<div class="gd"></div>
+
+<!-- VALUES -->
+<section id="val" class="sec">
+  <span class="slbl rv">Core Principles</span>
+  <h2 class="sttl"><span class="lrev"><span class="lrevi rv d1">What Drives</span></span><span class="lrev"><span class="lrevi rv d2"><em>Every Decision</em></span></span></h2>
+  <div class="vgrid">
+    <div class="vi rv"><div class="viswp"></div><div class="vigh">01</div><div class="vnum">01</div><div class="vtit">Excellence Without Negotiation</div><p class="vdesc">Quality is not a selling point for ZALVIQ &mdash; it is the entry requirement. Every product, service and experience must clear a single bar: the highest one.</p></div>
+    <div class="vi rv d1"><div class="viswp"></div><div class="vigh">02</div><div class="vnum">02</div><div class="vtit">Identity Over Trend</div><p class="vdesc">We don't follow what's popular. We build what's right. Our brands have a point of view &mdash; and we hold it, even when the market moves elsewhere.</p></div>
+    <div class="vi rv d2"><div class="viswp"></div><div class="vigh">03</div><div class="vnum">03</div><div class="vtit">Precision in Everything</div><p class="vdesc">The details no one asked about are the ones we obsess over most. From the weight of a word in a slogan to the feel of a product in your hand.</p></div>
+    <div class="vi rv d3"><div class="viswp"></div><div class="vigh">04</div><div class="vnum">04</div><div class="vtit">Built to Last</div><p class="vdesc">We are not building for this quarter. We are building for decades. Every decision is made with one question: will this still be right in 20 years?</p></div>
+  </div>
+</section>
+
+<div class="gd"></div>
+
+<!-- CONTACT -->
+<section id="ct" class="sec">
+  <span class="slbl rv">Get In Touch</span>
+  <h2 class="sttl"><span class="lrev"><span class="lrevi rv d1">Let's Build</span></span><span class="lrev"><span class="lrevi rv d2"><em>Something Great</em></span></span></h2>
+  <div class="ctgrid">
+    <div class="rv d2">
+      <p class="sbody" style="margin-bottom:3.5rem">We respond to every serious inquiry. If you have a vision worth building, we want to hear it.</p>
+      <div class="ctlbl">Location</div><div class="ctval">Riyadh, Saudi Arabia</div>
+      <div class="ctlbl">General</div><div class="ctval">hello@zalviq.com</div>
+      <div class="ctlbl">Partnerships</div><div class="ctval">partners@zalviq.com</div>
+      <div class="ctlbl">Response</div><div class="ctval">Within 48 hours</div>
+    </div>
+    <form id="cform" class="rv d3">
+      <div class="f2">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Your name" required/><div class="fgbar"></div></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Your surname" required/><div class="fgbar"></div></div>
+      </div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" required/><div class="fgbar"></div></div>
+      <div class="fg"><label>Subject</label><input type="text" placeholder="What is this regarding?" required/><div class="fgbar"></div></div>
+      <div class="fg"><label>Message</label><textarea placeholder="Tell us what you have in mind..." required></textarea><div class="fgbar"></div></div>
+      <button type="submit" class="btng" style="border:none;cursor:pointer;font-family:'Raleway',sans-serif;width:100%;font-size:.62rem;letter-spacing:.48em"><span id="btxt">Send Message</span></button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="ftgrid">
+    <div><div class="ftlogo">ZALVIQ</div><div class="fttag">Others Compete. We Define.</div></div>
+    <div>
+      <div class="ftcolh">Navigate</div>
+      <ul class="ftlnks"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#bpin">Brands</a></li><li><a href="#ct">Contact</a></li></ul>
+    </div>
+    <div>
+      <div class="ftcolh">Brands</div>
+      <ul class="ftlnks"><li><a href="#bpin">ZALVIQ PARFUMS</a></li><li><a href="#bpin">ZALVIQ TECH</a></li><li><a href="#bpin" style="opacity:.35">Coming 2027</a></li></ul>
+    </div>
+  </div>
+  <div class="ftbot">
+    <p class="ftcopy">&copy; 2026 ZALVIQ. All rights reserved.</p>
+    <p class="ftcopy">Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; zalviq.com</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+const lenis=new Lenis({duration:1.4,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(t=>lenis.raf(t*1000));
+gsap.ticker.lagSmoothing(0);
+
+/* CURSOR */
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+const trails=Array.from({length:8},(_,i)=>document.getElementById('ct'+i));
+const tp=Array.from({length:8},()=>({x:0,y:0}));
+(function tick(){
+  rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';
+  tp[0].x+=(mx-tp[0].x)*.28;tp[0].y+=(my-tp[0].y)*.28;
+  for(let i=1;i<8;i++){tp[i].x+=(tp[i-1].x-tp[i].x)*.3;tp[i].y+=(tp[i-1].y-tp[i].y)*.3}
+  trails.forEach((t,i)=>{t.style.left=tp[i].x+'px';t.style.top=tp[i].y+'px';t.style.opacity=String((8-i)*.055);t.style.transform=`translate(-50%,-50%) scale(${1-i*.1})`});
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button,.vi,.cnti,.abcard,.bptag').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+/* LOADER */
+let pct=0;
+const lf=document.getElementById('lf'),lp=document.getElementById('lp'),lw=document.getElementById('lw'),ldr=document.getElementById('ldr');
+const ti=setInterval(()=>{pct+=Math.floor(Math.random()*8)+2;if(pct>=100){pct=100;clearInterval(ti)}lf.style.width=pct+'%';lp.textContent=String(pct).padStart(3,'0')},55);
+window.addEventListener('load',()=>{
+  setTimeout(()=>lw.classList.add('go'),300);
+  setTimeout(()=>{ldr.classList.add('ldr-out');setTimeout(()=>{ldr.remove();heroIn()},950)},2100);
+});
+
+function heroIn(){
+  gsap.to('#he',{opacity:.8,y:0,duration:.9,ease:'power3.out'});
+  document.getElementById('hw').classList.add('go');
+  gsap.to('#hr',{opacity:1,duration:.8,delay:1.2,ease:'power3.out'});
+  gsap.to('#hd',{opacity:1,y:0,duration:.8,delay:1.5,ease:'power3.out'});
+  gsap.to('#hb',{opacity:1,y:0,duration:.8,delay:1.8,ease:'power3.out'});
+  gsap.to('#hs',{opacity:1,duration:.8,delay:2.5});
+}
+
+window.addEventListener('scroll',()=>{document.getElementById('pgb').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+
+/* NAV */
+const nav=document.getElementById('nav'),nls=document.querySelectorAll('.nl');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('on',window.scrollY>80);
+  let c='home';
+  ['home','about','bpin','mf','val','ct'].forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-220)c=id});
+  nls.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+c));
+},{passive:true});
+
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('on');mob.classList.toggle('on')});
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hbg.classList.remove('on');mob.classList.remove('on')}));
+
+/* THREE.JS — burgundy+gold nebula */
+(function(){
+  const canvas=document.getElementById('glCanvas');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  const scene=new THREE.Scene();
+  const cam=new THREE.PerspectiveCamera(70,window.innerWidth/window.innerHeight,.1,1000);
+  cam.position.z=60;
+
+  const N=6000;
+  const pos=new Float32Array(N*3),col=new Float32Array(N*3),sz=new Float32Array(N),rnd=new Float32Array(N);
+  /* color palette: gold, deep rose, warm cream */
+  const palettes=[[201/255,168/255,76/255],[180/255,40/255,60/255],[255/255,220/255,140/255],[140/255,25/255,40/255],[220/255,185/255,100/255]];
+  for(let i=0;i<N;i++){
+    const t=Math.random()*Math.PI*8,arm=Math.floor(Math.random()*3);
+    const r=8+Math.random()*65,sp=Math.random()*7-3.5;
+    pos[i*3]=Math.cos(t+arm*2.094)*r+sp;
+    pos[i*3+1]=Math.sin(t+arm*2.094)*r*.4+sp+(Math.random()-.5)*22;
+    pos[i*3+2]=(Math.random()-.5)*45;
+    /* weight toward gold but include rose */
+    const p=Math.random()<.65?palettes[0]:Math.random()<.5?palettes[1]:Math.random()<.5?palettes[2]:Math.random()<.5?palettes[3]:palettes[4];
+    col[i*3]=p[0];col[i*3+1]=p[1];col[i*3+2]=p[2];
+    sz[i]=.3+Math.random()*2;rnd[i]=Math.random()*Math.PI*2;
+  }
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+  geo.setAttribute('aSize',new THREE.BufferAttribute(sz,1));
+  geo.setAttribute('aRnd',new THREE.BufferAttribute(rnd,1));
+  const mat=new THREE.ShaderMaterial({
+    uniforms:{uTime:{value:0},uMouse:{value:new THREE.Vector2(0,0)}},
+    vertexShader:`
+      uniform float uTime;uniform vec2 uMouse;
+      attribute float aSize;attribute float aRnd;attribute vec3 color;
+      varying vec3 vColor;varying float vAlpha;
+      void main(){
+        vec3 p=position;
+        p.x+=sin(p.y*.04+uTime*.35+aRnd)*3.0+uMouse.x*9.0;
+        p.z+=cos(p.x*.03+uTime*.25+aRnd*1.3)*2.5+uMouse.y*6.0;
+        float d=length(p.xy)/75.0;
+        vAlpha=smoothstep(1.2,0.0,d)*(0.25+0.75*abs(sin(aRnd+uTime*.18)));
+        vColor=color;
+        vec4 mv=modelViewMatrix*vec4(p,1.0);
+        gl_PointSize=aSize*(380.0/-mv.z);
+        gl_Position=projectionMatrix*mv;
+      }
+    `,
+    fragmentShader:`
+      varying vec3 vColor;varying float vAlpha;
+      void main(){
+        float d=length(gl_PointCoord-vec2(.5));
+        if(d>.5)discard;
+        float s=pow(1.0-d*2.0,1.8);
+        gl_FragColor=vec4(vColor,vAlpha*s);
+      }
+    `,
+    transparent:true,vertexColors:true,depthWrite:false,blending:THREE.AdditiveBlending
+  });
+  const pts=new THREE.Points(geo,mat);
+  scene.add(pts);
+
+  let mox=0,moy=0;
+  document.addEventListener('mousemove',e=>{mox=(e.clientX/window.innerWidth-.5)*.45;moy=-(e.clientY/window.innerHeight-.5)*.45});
+  window.addEventListener('resize',()=>{cam.aspect=window.innerWidth/window.innerHeight;cam.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight)});
+  let tt=0;
+  (function loop(){requestAnimationFrame(loop);tt+=.005;mat.uniforms.uTime.value=tt;mat.uniforms.uMouse.value.x+=(mox-mat.uniforms.uMouse.value.x)*.04;mat.uniforms.uMouse.value.y+=(moy-mat.uniforms.uMouse.value.y)*.04;pts.rotation.y=tt*.04;pts.rotation.x=tt*.015;cam.position.z=Math.max(15,60-window.scrollY*.04);renderer.render(scene,cam)})();
+})();
+
+/* HORIZONTAL BRANDS */
+const bpin=document.getElementById('bpin'),btrk=document.getElementById('btrk');
+const bpans=btrk.querySelectorAll('.bpan');
+const bTotal=(bpans.length-1)*window.innerWidth;
+bpin.style.height=(bpans.length*100)+'vh';
+gsap.to(btrk,{x:-bTotal,ease:'none',scrollTrigger:{trigger:bpin,pin:'#bstk',start:'top top',end:'+='+bTotal,scrub:.8,invalidateOnRefresh:true,
+  onUpdate:self=>{
+    const idx=Math.round(self.progress*(bpans.length-1));
+    document.querySelectorAll('.bpgd').forEach((d,i)=>d.classList.toggle('on',i===idx));
+    bpans.forEach((p,i)=>{if(Math.abs(i-self.progress*(bpans.length-1))<.55)p.classList.add('vis')});
+  }
+}});
+bpans[0].classList.add('vis');
+
+/* MANIFESTO WORD SCRUB */
+const mfWords="Others compete for position. Others compete for market share. Others compete for relevance. We don't compete. We define the ground others compete on.";
+const mftxt=document.getElementById('mftxt');
+mfWords.split(' ').forEach(w=>{
+  const s=document.createElement('span');s.className='mfw';
+  const isG=['define','ground','compete.'].includes(w.toLowerCase().replace(/[^a-z.]/g,''));
+  if(isG)s.dataset.g='1';s.textContent=w+' ';mftxt.appendChild(s);
+});
+const mfSpans=mftxt.querySelectorAll('.mfw');
+gsap.to({},{scrollTrigger:{trigger:'#mf',start:'top 80%',end:'bottom 20%',scrub:.5,
+  onUpdate:self=>{
+    const lit=Math.floor(self.progress*mfSpans.length*1.15);
+    mfSpans.forEach((s,i)=>{if(i<lit)s.classList.add(s.dataset.g?'gld':'lit');else s.classList.remove('lit','gld')});
+  }
+}});
+gsap.to('#mfbg',{yPercent:28,ease:'none',scrollTrigger:{trigger:'#mf',start:'top bottom',end:'bottom top',scrub:true}});
+
+/* REVEALS */
+new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1}).observe(document.getElementById('about'));
+new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1}).observe(document.getElementById('ct'));
+new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1}).observe(document.getElementById('val'));
+const rv=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');rv.unobserve(x.target)}})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+gsap.utils.toArray('.lrevi').forEach(el=>{ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>gsap.to(el,{y:0,opacity:1,duration:1.1,ease:'expo.out'})})});
+
+/* COUNTERS */
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const io=new IntersectionObserver(e=>{if(!e[0].isIntersecting)return;io.disconnect();const tgt=+el.dataset.count,o={v:tgt>100?1990:0};gsap.to(o,{v:tgt,duration:2.4,ease:'power2.out',onUpdate:()=>el.textContent=Math.floor(o.v)})});io.observe(el);
+});
+
+/* MARQUEE */
+const words=['ZALVIQ','Others Compete. We Define.','Excellence','Riyadh · KSA','Conglomerate','Luxury','Technology','Identity','Precision','2026'];
+const mqt=document.getElementById('mqt');
+[...words,...words,...words,...words].forEach(t=>{
+  const s=document.createElement('span');s.className='mqi';s.textContent=t;mqt.appendChild(s);
+  const d=document.createElement('span');d.className='mqs';d.textContent='◆';mqt.appendChild(d);
+});
+
+/* MAGNETIC */
+document.querySelectorAll('.btng,.btno,.ncta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.3,duration:.4,ease:'power2.out'})});
+  btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.8,ease:'elastic.out(1,.4)'}));
+});
+
+/* FORM */
+document.getElementById('cform').addEventListener('submit',e=>{
+  e.preventDefault();const b=document.getElementById('btxt');b.textContent='Message Sent ✓';
+  gsap.fromTo(e.target.querySelector('.btng'),{scale:1},{scale:1.02,yoyo:true,repeat:1,duration:.15});
+  setTimeout(()=>{b.textContent='Send Message';e.target.reset()},3500);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();lenis.scrollTo(t,{offset:-80,duration:1.6})});
+});
+</script>
+</body>
+</html>
