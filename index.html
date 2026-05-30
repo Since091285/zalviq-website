@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>ZALVIQ — Others Compete. We Define.</title>
-<meta name="description" content="A global conglomerate built not on size, but on standard. From Riyadh, spanning fragrance, technology, and beyond."/>
+<meta name="description" content="A global conglomerate built not on size, but on standard. From Globalspanning fragrance, technology, and beyond."/>
 <meta property="og:title" content="ZALVIQ — Others Compete. We Define."/>
 <meta property="og:description" content="A global conglomerate built not on size, but on standard."/>
 <meta property="og:url" content="https://zalviq.com"/>
@@ -284,6 +284,12 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
 .ft-copy{font-size:.68rem;color:var(--w2);letter-spacing:.12em}
 
 /* APP SECTION */
+.app-feature-wrap{max-width:1100px;margin:0 auto 3rem;overflow:hidden;border:1px solid var(--tb)}
+.app-feature-img{width:100%;height:auto;display:block;transition:transform .6s ease}
+.app-feature-wrap:hover .app-feature-img{transform:scale(1.015)}
+.b-app-ico{width:40px;height:40px;border-radius:10px;flex-shrink:0;object-fit:cover}
+.b-proj-item--app{cursor:pointer}
+.b-proj-item--app:hover{border-color:rgba(75,191,181,.5);background:rgba(75,191,181,.04)}
 #apps{background:var(--bg2);border-top:1px solid var(--tb);border-bottom:1px solid var(--tb);padding:7rem 10rem}
 .app-inner{display:grid;grid-template-columns:1fr auto;gap:6rem;align-items:center;max-width:1100px;margin:0 auto}
 .app-sub{font-size:.82rem;letter-spacing:.12em;color:var(--teal);margin-top:.5rem}
@@ -362,7 +368,7 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
   <canvas id="ptCanvas"></canvas>
   <div class="h-inner">
     <img src="assets/zalviq-wordmark.png" alt="ZALVIQ" id="hlogo" style="width:min(640px,82vw);height:auto;margin:0 auto 2rem;display:block;opacity:0;transition:opacity 1.2s ease"/>
-    <span class="h-eye" id="heye">Est. 2026 &nbsp;&middot;&nbsp; Global Conglomerate &nbsp;&middot;&nbsp; Riyadh, KSA</span>
+    <span class="h-eye" id="heye">Est. 2026 &nbsp;&middot;&nbsp; Global Conglomerate &nbsp;&middot;&nbsp; Global</span>
     
     <div class="h-rule" id="hrl"><div class="hrl l"></div><div class="hdm"></div><span class="h-sl">Others Compete. We Define.</span><div class="hdm"></div><div class="hrl r"></div></div>
     <p class="h-desc" id="hdsc">A conglomerate built not on size, but on standard.<br>Every brand under ZALVIQ carries one mandate &mdash;<br>to be the undisputed best of what it is.</p>
@@ -380,7 +386,7 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
     <div class="rv d2">
       <p class="s-body" style="margin-bottom:1.8rem">ZALVIQ was not created because the market needed another brand. It was created because the market needed a <span style="color:var(--teal2)">better one.</span></p>
       <blockquote class="ab-q">"Born from a refusal to compromise &mdash; on quality, on identity, on the details that most people never notice but everyone always <em>feels.</em>"</blockquote>
-      <p class="s-body">From Riyadh, we build a conglomerate spanning fragrance, technology, lifestyle and beyond &mdash; united not by category, but by standard.</p>
+      <p class="s-body">From Globalwe build a conglomerate spanning fragrance, technology, lifestyle and beyond &mdash; united not by category, but by standard.</p>
     </div>
     <div class="rv d3">
       <div class="ab-card">
@@ -475,9 +481,21 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
             </div>
             <div class="b-proj-list">
               <div style="font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem">Projects</div>
-              <div class="b-proj-item"><span class="b-proj-name">Expense Radar</span><span class="b-proj-status b-proj-live">● Live</span></div>
-              <div class="b-proj-item"><span class="b-proj-name">Kidz Canvas</span><span class="b-proj-status b-proj-dev">◑ In Development</span></div>
-              <div class="b-proj-item"><span class="b-proj-name">SiteTracker</span><span class="b-proj-status b-proj-dev">◑ In Development</span></div>
+              <div class="b-proj-item b-proj-item--app" onclick="openModal('modal-qr')">
+                <div style="display:flex;align-items:center;gap:.9rem">
+                  <img src="assets/er-icon.png" alt="Expense Radar" class="b-app-ico"/>
+                  <div><div class="b-proj-name">Expense Radar</div><div style="font-size:.65rem;color:var(--w2)">Finance tracker · AI insights</div></div>
+                </div>
+                <span class="b-proj-status b-proj-live">● Live</span>
+              </div>
+              <div class="b-proj-item b-proj-item--app">
+                <div style="display:flex;align-items:center;gap:.9rem">
+                  <img src="assets/kc-icon.png" alt="Kidz Canvas" class="b-app-ico"/>
+                  <div><div class="b-proj-name">Kidz Canvas</div><div style="font-size:.65rem;color:var(--w2)">Creative app for kids</div></div>
+                </div>
+                <span class="b-proj-status b-proj-dev">◑ In Dev</span>
+              </div>
+              <div class="b-proj-item"><span class="b-proj-name">SiteTracker</span><span class="b-proj-status b-proj-dev">◑ In Dev</span></div>
               <div class="b-proj-item"><span class="b-proj-name">Food Nutrition Scanner</span><span class="b-proj-status b-proj-plan">◌ Planned</span></div>
               <div class="b-proj-item"><span class="b-proj-name">Brain Safari Game</span><span class="b-proj-status b-proj-plan">◌ Planned</span></div>
             </div>
@@ -512,7 +530,7 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
             <div class="b-tags">
               <span class="b-tag">Noir</span><span class="b-tag">Blanc</span><span class="b-tag">Rouge</span><span class="b-tag">Or</span>
             </div>
-            <p style="font-size:.8rem;color:var(--w2);letter-spacing:.06em">Est. 2026 &nbsp;&middot;&nbsp; Riyadh, KSA</p>
+            <p style="font-size:.8rem;color:var(--w2);letter-spacing:.06em">Est. 2026 &nbsp;&middot;&nbsp; Global</p>
           </div>
           <div class="b-acc-right">
             <button class="b-cta-btn" onclick="openModal('modal-parfums')">
@@ -547,7 +565,10 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-qr')">&times;</button>
     <span class="modal-tag">ZALVIQ Tech &nbsp;&middot;&nbsp; Mobile Apps</span>
-    <div class="modal-title">Expense Radar</div>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+      <img src="assets/er-icon.png" alt="Expense Radar" style="width:52px;height:52px;border-radius:12px;flex-shrink:0"/>
+      <div class="modal-title" style="margin-bottom:0">Expense Radar</div>
+    </div>
     <p class="modal-sub">Scan the QR code below or tap the button to download from Google Play.</p>
     <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:1.5rem">
       <div class="modal-qr-wrap"><div id="modal-qrcode"></div></div>
@@ -612,9 +633,15 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
 <!-- EXPENSE RADAR APP SECTION -->
 <section id="apps">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <div class="app-feature-wrap rv">
+    <img src="assets/er-feature.png" alt="Expense Radar" class="app-feature-img"/>
+  </div>
   <div class="app-inner">
     <div class="app-text rv">
-      <span class="s-lbl" style="opacity:1;transform:none">Our Digital Tools</span>
+      <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem">
+        <img src="assets/er-icon.png" alt="Expense Radar icon" style="width:56px;height:56px;border-radius:14px;flex-shrink:0"/>
+        <span class="s-lbl" style="opacity:1;transform:none;margin-bottom:0">Our Digital Tools</span>
+      </div>
       <h2 class="s-ttl" style="font-size:clamp(2.2rem,5vw,4.5rem);margin-bottom:1rem">Expense<br><em>Radar</em></h2>
       <p class="app-sub">Take control of your personal finances</p>
       <p class="s-body" style="margin:1.5rem 0 2rem">Track your bills, manage recurring expenses, and get AI-powered insights to make smarter financial decisions &mdash; all in one elegant app built by ZALVIQ Tech.</p>
@@ -651,7 +678,7 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
   <div class="ct-grid">
     <div class="rv d2">
       <p class="s-body" style="margin-bottom:3rem">We respond to every serious inquiry. If you have a vision worth building, we want to hear it.</p>
-      <div class="ct-lbl">Location</div><div class="ct-val">Riyadh, Saudi Arabia</div>
+      <div class="ct-lbl">Location</div><div class="ct-val">Global</div>
       <div class="ct-lbl">General</div><div class="ct-val">info@zalviq.com</div>
       <div class="ct-lbl">Partnerships</div><div class="ct-val">partners@zalviq.com</div>
       <div class="ct-lbl">Response</div><div class="ct-val">Within 48 hours</div>
@@ -674,7 +701,7 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
     <div>
       <div class="ft-logo" style="margin-bottom:1rem"><img src="assets/zalviq-wordmark-sm.png" alt="ZALVIQ" style="height:48px;width:auto;opacity:.85"/></div>
       <div class="ft-tag">Others Compete. We Define.</div>
-      <p class="ft-about">A global conglomerate built from Riyadh, spanning fragrance, technology, and beyond. United by one standard: the highest one.</p>
+      <p class="ft-about">A global conglomerate built from Globalspanning fragrance, technology, and beyond. United by one standard: the highest one.</p>
       <div class="ft-soc-row">
         <a href="https://instagram.com/zalviq" class="ft-soc" target="_blank">IG</a>
         <a href="https://linkedin.com/company/zalviq" class="ft-soc" target="_blank">LI</a>
@@ -695,13 +722,13 @@ footer{background:var(--bg2);border-top:1px solid var(--tb);padding:5rem 10rem 2
       <ul class="ft-lnks">
         <li><a href="mailto:info@zalviq.com">info@zalviq.com</a></li>
         <li><a href="mailto:partners@zalviq.com">partners@zalviq.com</a></li>
-        <li style="color:var(--w2);font-size:.85rem;letter-spacing:.04em">Riyadh, KSA</li>
+        <li style="color:var(--w2);font-size:.85rem;letter-spacing:.04em">Global</li>
       </ul>
     </div>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">&copy; 2026 ZALVIQ. All rights reserved.</p>
-    <p class="ft-copy">Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; zalviq.com</p>
+    <p class="ft-copy">Global &nbsp;&middot;&nbsp; zalviq.com</p>
   </div>
 </footer>
 
@@ -806,7 +833,7 @@ document.querySelectorAll('[data-count]').forEach(el=>{
 });
 
 /* MARQUEE BUILD */
-const words=['ZALVIQ','Others Compete. We Define.','Excellence','Conglomerate','Riyadh \u00B7 KSA','Luxury Fragrance','Technology','Identity','Precision','2026'];
+const words=['ZALVIQ','Others Compete. We Define.','Excellence','Conglomerate','Worldwide','Luxury Fragrance','Technology','Identity','Precision','2026'];
 const mqt=document.getElementById('mqt');
 [...words,...words,...words,...words].forEach(t=>{
   const s=document.createElement('span');s.className='mq-i';s.textContent=t;mqt.appendChild(s);
